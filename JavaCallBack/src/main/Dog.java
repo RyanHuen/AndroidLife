@@ -8,5 +8,6 @@ public class Dog implements CallBack{
     @Override
     public void callBack(Person person) {
         System.out.println("狗被人打了，狗咬回：" + person);
+        person.shout();
     }
 }
