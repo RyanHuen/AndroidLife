@@ -10,6 +10,8 @@ import android.widget.Button;
 import com.chaozhuo.rxexample.base.BaseImplActivity;
 import com.chaozhuo.rxexample.base.JustFromActivity;
 import com.chaozhuo.rxexample.base.UnComDefiActivity;
+import com.chaozhuo.rxexample.keyword.flatmap.FlatMapKeyActivity;
+import com.chaozhuo.rxexample.keyword.MapKeyActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @OnClick({
-            R.id.base_impl, R.id.just_from, R.id.unComplete_definition
+            R.id.base_impl, R.id.just_from, R.id.unComplete_definition, R.id.map_key
+            , R.id.flat_map_key
     })
     public void onClick(View view) {
         switch (view.getId()) {
@@ -46,6 +49,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.unComplete_definition:
                 this.startActivity(new Intent(this, UnComDefiActivity.class));
+                break;
+            case R.id.map_key:
+                this.startActivity(new Intent(this, MapKeyActivity.class));
+                break;
+            case R.id.flat_map_key:
+                this.startActivity(new Intent(this, FlatMapKeyActivity.class));
                 break;
         }
     }

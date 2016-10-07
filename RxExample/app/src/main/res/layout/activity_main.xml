@@ -24,4 +24,18 @@
         android:layout_height="wrap_content"
         android:text="不完整订阅" />
 
+    <Button
+        android:id="@+id/map_key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="map关键字"
+        />
+    <Button
+        android:id="@+id/flat_map_key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="flatMap关键字"
+        />
+
+
 </LinearLayout>
