@@ -1,6 +1,17 @@
 
 package com.ryanhuen.baserecycler;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.ryanhuen.baserecycler.adapter.PhoneAdapter;
+import com.ryanhuen.baserecycler.layoutmanager.PLayoutManager;
+import com.ryanhuen.baserecycler.utils.Utils;
+import com.ryanhuen.permission_m.PermissionConfig;
+import com.ryanhuen.permission_m.RequestPermission;
+
 import android.Manifest;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,25 +21,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.ryanhuen.baserecycler.adapter.PhoneAdapter;
-import com.ryanhuen.baserecycler.layoutmanager.PLayoutManager;
-import com.ryanhuen.baserecycler.utils.Utils;
-import com.ryanhuen.permission_m.PermissionConfig;
-import com.ryanhuen.permission_m.RequestPermission;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final int mContentGridItemWidth = MyApplication.getContext()
+            .getResources().getDimensionPixelOffset(R.dimen.content_grid_item_min_width);
     RecyclerView mContentRecycler;
     LinearLayout mActivityMain;
     Button mSwitchLayout;
     private PLayoutManager mLayoutManager;
     private PhoneAdapter mContentAdpater;
-    private static final int mContentGridItemWidth = MyApplication.getContext()
-            .getResources().getDimensionPixelOffset(R.dimen.content_grid_item_min_width);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (mLayoutManager.getViewType() == Config.ViewTypeGrid) {
             switchLayoutManager(new File(Config.DIR_EXTERNAL_STORAGE), Config.ViewTypeSimpleList);
         } else {
-            switchLayoutManager(new File(Config.DIR_EXTERNAL_STORAGE), Config.ViewTypeDoubleLineList);
+            switchLayoutManager(new File(Config.DIR_EXTERNAL_STORAGE),
+                    Config.ViewTypeDoubleLineList);
         }
     }
 

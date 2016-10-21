@@ -1,19 +1,19 @@
 
 package com.ryanhuen.baserecycler.layoutmanager;
 
-import com.ryanhuen.baserecycler.Config;
-import com.ryanhuen.baserecycler.R;
-import com.ryanhuen.baserecycler.holder.impl.ContentDoubleListHolder;
-import com.ryanhuen.baserecycler.holder.impl.ContentGridItemHolder;
-import com.ryanhuen.baserecycler.holder.impl.ContentSimpleListHolder;
-import com.ryanhuen.baserecycler.interfaces.LayoutTypeListener;
-
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import com.ryanhuen.baserecycler.Config;
+import com.ryanhuen.baserecycler.R;
+import com.ryanhuen.baserecycler.holder.impl.ContentDoubleListHolder;
+import com.ryanhuen.baserecycler.holder.impl.ContentGridItemHolder;
+import com.ryanhuen.baserecycler.holder.impl.ContentSimpleListHolder;
+import com.ryanhuen.baserecycler.interfaces.LayoutTypeListener;
 
 /**
  * Created by xianeng on 16-7-17.
