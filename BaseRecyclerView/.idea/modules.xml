@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BaseRecyclerView.iml" filepath="$PROJECT_DIR$/BaseRecyclerView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baserecycler/baserecycler.iml" filepath="$PROJECT_DIR$/baserecycler/baserecycler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/permission_m/permission_m.iml" filepath="$PROJECT_DIR$/permission_m/permission_m.iml" />
+    </modules>
+  </component>
+</project>

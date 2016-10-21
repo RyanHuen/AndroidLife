@@ -1,27 +1,24 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
             java.srcDirs = ['src']
-            resources.srcDirs = ['src']
+            resources.srcDirs = ['res']
             aidl.srcDirs = ['src']
             renderscript.srcDirs = ['src']
             res.srcDirs = ['res', 'res-ptr']
-//            assets.srcDirs = ['assets']
-//		    jnilibs.srcDirs=['libs','libs-sdk']
+            assets.srcDirs = ['assets']
+//		jnilibs.srcDirs=['libs','libs-sdk']
         }
     }
 
     defaultConfig {
-        applicationId "com.chaozhuo.permissionrequest"
-        minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
     }
     buildTypes {
         release {
