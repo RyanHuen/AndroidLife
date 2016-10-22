@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.rxbus.event.Event;
 import com.example.rxbus.event.EventSticky;
 import com.example.rxbus.rx.RxBus;
+import com.example.rxbus.rx.RxSubscriptions;
 
 import rx.Subscription;
 import rx.functions.Action1;

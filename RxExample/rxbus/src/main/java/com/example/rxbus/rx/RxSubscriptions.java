@@ -1,4 +1,4 @@
-package com.example.rxbus;
+package com.example.rxbus.rx;
 
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
