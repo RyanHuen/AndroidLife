@@ -7,6 +7,7 @@ public class Course {
     private String mCourseName;
 
 
+
     public String getCourseName() {
         return mCourseName;
     }

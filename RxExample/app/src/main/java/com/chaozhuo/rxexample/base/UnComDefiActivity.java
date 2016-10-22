@@ -105,6 +105,7 @@ public class UnComDefiActivity extends AppCompatActivity {
     }
 
     private void justOnNextAction() {
+        //被观察者
         Observable<String> observable = Observable.just("1", "2", "3", "4");
 
         Action1<String> onNextAction = new Action1<String>() {

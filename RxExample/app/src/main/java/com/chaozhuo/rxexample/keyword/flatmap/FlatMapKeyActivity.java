@@ -24,7 +24,6 @@ public class FlatMapKeyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_flat_map_key);
         initStudents();
         subscriberUsingFlatMap();
-
     }
 
     private void subscriberUsingFlatMap() {
@@ -44,7 +43,11 @@ public class FlatMapKeyActivity extends AppCompatActivity {
                 Log.d(TAG, "onNext: CourseName is :" + course.getCourseName());
             }
         };
+
+        //被观察者
         final Observable<Student> observable = Observable.from(mStudents);
+
+                                    //StudentA
         observable.flatMap(new Func1<Student, Observable<Course>>() {
             @Override
             public Observable<Course> call(Student student) {

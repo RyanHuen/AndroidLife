@@ -14,7 +14,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import rx.Observable;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 
 public class MapKeyActivity extends AppCompatActivity {
@@ -57,7 +56,7 @@ public class MapKeyActivity extends AppCompatActivity {
             public Drawable call(Integer integer) {
                 return MapKeyActivity.this.getResources().getDrawable(integer);
             }
-        }).observeOn(AndroidSchedulers.mainThread()).subscribe(subscriber);
+        }).subscribe(subscriber);
 
     }
 }

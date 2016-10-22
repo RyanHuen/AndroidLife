@@ -9,17 +9,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+
+
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity android:name=".base.BaseImplActivity" />
         <activity android:name=".base.JustFromActivity" />
         <activity android:name=".base.UnComDefiActivity" />
         <activity android:name=".keyword.MapKeyActivity" />
-        <activity android:name=".keyword.flatmap.FlatMapKeyActivity"></activity>
+        <activity android:name=".keyword.flatmap.FlatMapKeyActivity" />
+        <activity android:name="com.szt.rx.DefaultActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name="com.szt.rx.base.BaseUseActivity"></activity>
     </application>
 
 </manifest>
