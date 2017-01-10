@@ -1,7 +1,6 @@
 
 package com.ryanhuen.rxjava2demo.base;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,41 +24,38 @@ public class LineHandleActivity extends AppCompatActivity {
     }
 
     private void doRxJavaWork() {
-        Observable.create(new ObservableOnSubscribe<Integer>() {
+        Observable.create(new ObservableOnSubscribe<String>() {
             @Override
-            public void subscribe(ObservableEmitter<Integer> e/* 事件发射器 */) throws Exception {
-                e.onNext(1);
-                e.onNext(2);
-                e.onNext(3);
-                e.onNext(4);
+            public void subscribe(ObservableEmitter<String> e/* 事件发射器 */) throws Exception {
+                e.onNext("事件1");
+                e.onNext("事件2");
+                e.onNext("事件3");
+                e.onNext("事件4");
                 e.onComplete();
 
             }
-        }).subscribe(new Observer<Integer>() {
+        }).subscribe(new Observer<String>() {
             @Override
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, "onSubscribe: ");
-
             }
 
             @Override
-            public void onNext(Integer integer) {
-                Log.d(TAG, "onNext: " + integer);
-
+            public void onNext(String string) {
+                Log.d(TAG, "onNext: " + string);
             }
 
             @Override
             public void onError(Throwable e) {
-                Log.d(TAG, "onError: ");
-
+                Log.d(TAG, "onError: " + e.getMessage());
             }
 
             @Override
             public void onComplete() {
                 Log.d(TAG, "onComplete: ");
-
             }
         });
 
     }
+
 }

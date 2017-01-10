@@ -1,7 +1,6 @@
 
 package com.ryanhuen.rxjava2demo.flowable;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -29,22 +28,8 @@ public class UnlimitPostActivity extends AppCompatActivity {
         Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                for (int i = 0; ; i++) {  //无限循环发送事件
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
-                    emitter.onNext(i);
+                for (;;) { // 无限循环发送事件
+                    emitter.onNext(Integer.MAX_VALUE);
                 }
             }
         }).subscribeOn(Schedulers.io())

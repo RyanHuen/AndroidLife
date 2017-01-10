@@ -25,9 +25,8 @@ import com.ryanhuen.rxjava2demo.usebus.UseBusActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mBaseImpl;
-    private Button baseImpl;
-    private Button lineHandle;
+    private Button mBaseImpl;// 基本实现
+    private Button lineHandle;// 链式调用
     private Button disposeInProcess;
     private Button mJustEmitter;
     private Button mDefaultThread;

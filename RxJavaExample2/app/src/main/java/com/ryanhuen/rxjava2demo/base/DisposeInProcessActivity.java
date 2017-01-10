@@ -1,7 +1,6 @@
 
 package com.ryanhuen.rxjava2demo.base;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,24 +24,24 @@ public class DisposeInProcessActivity extends AppCompatActivity {
     }
 
     private void doRxjavaWork() {
-        Observable.create(new ObservableOnSubscribe<Integer>() {
+        Observable.create(new ObservableOnSubscribe<String>() {
             @Override
-            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
-                e.onNext(0);
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
+                e.onNext("事件0");
                 Log.d(TAG, "onNext0");
-                e.onNext(1);
+                e.onNext("事件1");
                 Log.d(TAG, "onNext1");
-                e.onNext(2);
+                e.onNext("事件2");
                 Log.d(TAG, "onNext2");
-                e.onNext(3);
+                e.onNext("事件3");
                 Log.d(TAG, "onNext3");
-                e.onNext(4);
+                e.onNext("事件4");
                 Log.d(TAG, "onNext4");
                 e.onComplete();
                 Log.d(TAG, "onComplete");
 
             }
-        }).subscribe(new Observer<Integer>() {
+        }).subscribe(new Observer<String>() {
             Disposable mDisposable;
 
             @Override
@@ -52,9 +51,9 @@ public class DisposeInProcessActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(Integer integer) {
-                Log.d(TAG, "onNext: " + integer);
-                if (integer > 2) {
+            public void onNext(String string) {
+                Log.d(TAG, "onNext: " + string);
+                if (string.equals("事件2")) {
                     mDisposable.dispose();
                     Log.d(TAG, "切断水管");
                 }
@@ -73,4 +72,5 @@ public class DisposeInProcessActivity extends AppCompatActivity {
             }
         });
     }
+
 }

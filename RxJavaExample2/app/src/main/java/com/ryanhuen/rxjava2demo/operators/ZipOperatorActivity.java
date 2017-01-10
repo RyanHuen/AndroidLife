@@ -1,7 +1,6 @@
 
 package com.ryanhuen.rxjava2demo.operators;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -27,13 +26,13 @@ public class ZipOperatorActivity extends AppCompatActivity {
     }
 
     private void doRxJavaWork() {
-        Observable<Integer> observable1 = Observable.create(new ObservableOnSubscribe<Integer>() {
+        Observable<String> observable1 = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
-            public void subscribe(ObservableEmitter<Integer> e/* 事件发射器 */) throws Exception {
-                e.onNext(1);
-                e.onNext(2);
-                e.onNext(3);
-                e.onNext(4);
+            public void subscribe(ObservableEmitter<String> e/* 事件发射器 */) throws Exception {
+                e.onNext("01我是：");
+                e.onNext("02我是：");
+                e.onNext("03我是：");
+                e.onNext("04我是：");
                 e.onComplete();
             }
         }).subscribeOn(Schedulers.io());
@@ -46,20 +45,20 @@ public class ZipOperatorActivity extends AppCompatActivity {
                 e.onComplete();
             }
         }).subscribeOn(Schedulers.io());
-        Observable.zip(observable1, observable2, new BiFunction<Integer, Integer, Integer>() {
+        Observable.zip(observable1, observable2, new BiFunction<String, Integer, String>() {
             @Override
-            public Integer apply(Integer integer, Integer integer2) throws Exception {
+            public String apply(String integer, Integer integer2) throws Exception {
                 return integer + integer2;
             }
-        }).subscribe(new Observer<Integer>() {
+        }).subscribe(new Observer<String>() {
             @Override
             public void onSubscribe(/**/Disposable d) {
                 Log.d(TAG, "onSubscribe: ");
             }
 
             @Override
-            public void onNext(Integer integer) {
-                Log.d(TAG, "zip操作结果: " + integer);
+            public void onNext(String string) {
+                Log.d(TAG, "zip操作结果: " + string);
             }
 
             @Override

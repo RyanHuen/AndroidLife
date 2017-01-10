@@ -26,18 +26,18 @@ public class BaseFlowableActivity extends AppCompatActivity {
     }
 
     private void doRxJavaWork() {
-        Flowable<Integer> flowable = Flowable.create(new FlowableOnSubscribe<Integer>() {
+        Flowable<String> flowable = Flowable.create(new FlowableOnSubscribe<String>() {
             @Override
-            public void subscribe(FlowableEmitter<Integer> e) throws Exception {
-                e.onNext(1);
-                e.onNext(2);
-                e.onNext(3);
-                e.onNext(4);
+            public void subscribe(FlowableEmitter<String> e) throws Exception {
+                e.onNext("事件1");
+                e.onNext("事件2");
+                e.onNext("事件3");
+                e.onNext("事件4");
                 e.onComplete();
             }
         }, BackpressureStrategy.ERROR);
 
-        Subscriber<Integer> subscriber = new Subscriber<Integer>() {
+        Subscriber<String> subscriber = new Subscriber<String>() {
             @Override
             public void onSubscribe(Subscription s) {
                 Log.d(TAG, "onSubscribe: ");
@@ -46,8 +46,8 @@ public class BaseFlowableActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(Integer integer) {
-                Log.d(TAG, "onNext: " + integer);
+            public void onNext(String string) {
+                Log.d(TAG, "onNext: " + string);
             }
 
             @Override

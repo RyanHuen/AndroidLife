@@ -29,23 +29,26 @@ public class FlatMapOperatorActivity extends AppCompatActivity {
     }
 
     private void doRxJavaWork() {
-        Observable.create(new ObservableOnSubscribe<Integer>() {
+        Observable.create(new ObservableOnSubscribe<String>() {
             @Override
-            public void subscribe(ObservableEmitter<Integer> e/* 事件发射器 */) throws Exception {
-                e.onNext(1);
-                e.onNext(2);
-                e.onNext(3);
-                e.onNext(4);
+            public void subscribe(ObservableEmitter<String> e/* 事件发射器 */) throws Exception {
+                e.onNext("事件1");
+                e.onNext("事件2");
+                e.onNext("事件3");
+                e.onNext("事件4");
                 e.onComplete();
             }
-        }).flatMap(new Function<Integer, ObservableSource<String>>() {
+        }).flatMap(new Function<String, ObservableSource<String>>() {
             @Override
-            public ObservableSource<String> apply(Integer integer) throws Exception {
+            public ObservableSource<String> apply(String string) throws Exception {
                 final List<String> list = new ArrayList<String>();
                 for (int i = 0; i < 3; i++) {
-                    list.add("I am value:" + integer);
+                    list.add("I am value:" + string);
                 }
-                return Observable.fromIterable(list)/*后续代码加入了delay功能，标示发送事件延迟10毫秒*/.delay(10, TimeUnit.MILLISECONDS);
+                return Observable.fromIterable(list)/*
+                                                     * 后续代码加入了delay功能，
+                                                     * 标示发送事件延迟10毫秒
+                                                     */.delay(10, TimeUnit.MILLISECONDS);
             }
 
         }).subscribe(new Consumer<String>() {

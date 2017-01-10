@@ -1,7 +1,6 @@
 
 package com.ryanhuen.rxjava2demo.operators;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,21 +24,21 @@ public class MapOperatorActivity extends AppCompatActivity {
     }
 
     private void doRxJavaWork() {
-        Observable.create(new ObservableOnSubscribe<Integer>() {
+        Observable.create(new ObservableOnSubscribe<String>() {
             @Override
-            public void subscribe(ObservableEmitter<Integer> e/* 事件发射器 */) throws Exception {
-                e.onNext(1);
-                e.onNext(2);
-                e.onNext(3);
-                e.onNext(4);
+            public void subscribe(ObservableEmitter<String> e/* 事件发射器 */) throws Exception {
+                e.onNext("事件1");
+                e.onNext("事件2");
+                e.onNext("事件3");
+                e.onNext("事件4");
                 e.onComplete();
 
             }
-        }).map(new Function<Integer, String>() {
+        }).map(new Function<String, String>() {
             @Override
-            public String apply(Integer integer) throws Exception {
-                // 通过变换操作，将数字拼接上字符串，随后返回
-                return "this is resule:" + integer;
+            public String apply(String string) throws Exception {
+                // 通过变换操作，拼接字符串，随后返回
+                return "this is resule:" + string;
             }
         }).subscribe(new Consumer<String>() {
             @Override

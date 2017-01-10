@@ -1,7 +1,6 @@
 
 package com.ryanhuen.rxjava2demo.base;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -23,31 +22,32 @@ public class JustEmitterActivity extends AppCompatActivity {
     }
 
     private void doRxJavaWork() {
-        Observable.just(0, 1, 2, 3, 4, 5, 6, 7, 8, 9).subscribe(new Observer<Integer>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                Log.d(TAG, "onSubscribe: ");
+        Observable.just("事件0", "事件1", "事件2", "事件3", "事件4", "事件5", "事件6", "事件7", "事件8", "事件9")
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d(TAG, "onSubscribe: ");
 
-            }
+                    }
 
-            @Override
-            public void onNext(Integer integer) {
-                Log.d(TAG, "onNext: " + integer);
+                    @Override
+                    public void onNext(String string) {
+                        Log.d(TAG, "onNext: " + string);
 
-            }
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                Log.d(TAG, "onError: ");
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "onError: ");
 
-            }
+                    }
 
-            @Override
-            public void onComplete() {
-                Log.d(TAG, "onComplete: ");
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "onComplete: ");
 
-            }
-        });
+                    }
+                });
 
     }
 }

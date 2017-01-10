@@ -1,7 +1,6 @@
 
 package com.ryanhuen.rxjava2demo.thread_control;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -28,28 +27,28 @@ public class ChangeThreadActivity extends AppCompatActivity {
 
     private void doRxjavaWork() {
         // 创建一个上游的Observable（被观察者）
-        Observable<Integer> observable = Observable.create(new ObservableOnSubscribe<Integer>() {
+        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
-            public void subscribe(ObservableEmitter<Integer> e/* 事件发射器 */) throws Exception {
+            public void subscribe(ObservableEmitter<String> e/* 事件发射器 */) throws Exception {
                 // 发射事件
                 Log.d(TAG, "Observable thread is :" + Thread.currentThread().getName());
-                e.onNext(1);
-                e.onNext(2);
-                e.onNext(3);
+                e.onNext("事件1");
+                e.onNext("事件2");
+                e.onNext("事件3");
                 e.onComplete();
             }
         });
 
         // 创建一个下游Observer（观察者）
-        Observer<Integer> observer = new Observer<Integer>() {
+        Observer<String> observer = new Observer<String>() {
             @Override
             public void onSubscribe(/**/Disposable d) {
                 Log.d(TAG, "onSubscribe: ");
             }
 
             @Override
-            public void onNext(Integer integer) {
-                Log.d(TAG, "onNext: " + integer);
+            public void onNext(String string) {
+                Log.d(TAG, "onNext: " + string);
                 Log.d(TAG, "Observer thread is :" + Thread.currentThread().getName());
             }
 
