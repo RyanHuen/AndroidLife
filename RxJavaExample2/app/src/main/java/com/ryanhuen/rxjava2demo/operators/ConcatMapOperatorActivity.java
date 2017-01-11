@@ -43,7 +43,7 @@ public class ConcatMapOperatorActivity extends AppCompatActivity {
             public ObservableSource<String> apply(String string) throws Exception {
                 final List<String> list = new ArrayList<String>();
                 for (int i = 0; i < 3; i++) {
-                    list.add("I am value:" + string);
+                    list.add("我经过了变换:" + string);
                 }
                 return Observable.fromIterable(list)/*
                                                      * 后续代码加入了delay功能，

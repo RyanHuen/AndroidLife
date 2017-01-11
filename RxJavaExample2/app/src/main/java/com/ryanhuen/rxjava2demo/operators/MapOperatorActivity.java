@@ -27,10 +27,15 @@ public class MapOperatorActivity extends AppCompatActivity {
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> e/* 事件发射器 */) throws Exception {
+                Log.d(TAG, "上游调用onNext1");
                 e.onNext("事件1");
+                Log.d(TAG, "上游调用onNext2");
                 e.onNext("事件2");
+                Log.d(TAG, "上游调用onNext3");
                 e.onNext("事件3");
+                Log.d(TAG, "上游调用onNext4");
                 e.onNext("事件4");
+                Log.d(TAG, "上游调用onComplete");
                 e.onComplete();
 
             }
@@ -38,13 +43,12 @@ public class MapOperatorActivity extends AppCompatActivity {
             @Override
             public String apply(String string) throws Exception {
                 // 通过变换操作，拼接字符串，随后返回
-                return "this is resule:" + string;
+                return "变换后的结果：" + string;
             }
         }).subscribe(new Consumer<String>() {
             @Override
             public void accept(String s) throws Exception {
-                Log.d(TAG, "accept: " + s);
-
+                Log.d(TAG, s);
             }
         });
 

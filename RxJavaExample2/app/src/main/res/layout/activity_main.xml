@@ -116,7 +116,7 @@
             android:id="@+id/unlimit_post_operator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="无限次发射事件" />
+            android:text="测试无BackPressure(应用会卡死)" />
 
         <View
             android:layout_width="match_parent"

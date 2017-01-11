@@ -27,18 +27,18 @@ public class DisposeInProcessActivity extends AppCompatActivity {
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> e) throws Exception {
+                Log.d(TAG, "上游调用onNext0");
                 e.onNext("事件0");
-                Log.d(TAG, "onNext0");
+                Log.d(TAG, "上游调用onNext1");
                 e.onNext("事件1");
-                Log.d(TAG, "onNext1");
+                Log.d(TAG, "上游调用onNext2");
                 e.onNext("事件2");
-                Log.d(TAG, "onNext2");
+                Log.d(TAG, "上游调用onNext3");
                 e.onNext("事件3");
-                Log.d(TAG, "onNext3");
+                Log.d(TAG, "上游调用onNext4");
                 e.onNext("事件4");
-                Log.d(TAG, "onNext4");
+                Log.d(TAG, "上游调用onComplete");
                 e.onComplete();
-                Log.d(TAG, "onComplete");
 
             }
         }).subscribe(new Observer<String>() {
@@ -52,7 +52,7 @@ public class DisposeInProcessActivity extends AppCompatActivity {
 
             @Override
             public void onNext(String string) {
-                Log.d(TAG, "onNext: " + string);
+                Log.d(TAG, "下游onNext: " + string);
                 if (string.equals("事件2")) {
                     mDisposable.dispose();
                     Log.d(TAG, "切断水管");
@@ -61,13 +61,13 @@ public class DisposeInProcessActivity extends AppCompatActivity {
 
             @Override
             public void onError(Throwable e) {
-                Log.d(TAG, "onError: ");
+                Log.d(TAG, "下游onError: ");
 
             }
 
             @Override
             public void onComplete() {
-                Log.d(TAG, "onComplete: ");
+                Log.d(TAG, "下游onComplete: ");
 
             }
         });

@@ -33,9 +33,13 @@ public class MultiThreadChangeActivity extends AppCompatActivity {
             public void subscribe(ObservableEmitter<String> e/* 事件发射器 */) throws Exception {
                 // 发射事件
                 Log.d(TAG, "Observable thread is :" + Thread.currentThread().getName());
+                Log.d(TAG, "上游调用onNext1");
                 e.onNext("事件1");
+                Log.d(TAG, "上游调用onNext2");
                 e.onNext("事件2");
+                Log.d(TAG, "上游调用onNext3");
                 e.onNext("事件3");
+                Log.d(TAG, "上游调用onComplete");
                 e.onComplete();
             }
         });
@@ -49,19 +53,19 @@ public class MultiThreadChangeActivity extends AppCompatActivity {
 
             @Override
             public void onNext(String string) {
-                Log.d(TAG, "onNext: " + string);
+                Log.d(TAG, "下游onNext: " + string);
                 Log.d(TAG, "Observer thread is :" + Thread.currentThread().getName());
             }
 
             @Override
             public void onError(Throwable e) {
-                Log.d(TAG, "onError: ");
+                Log.d(TAG, "下游onError: ");
 
             }
 
             @Override
             public void onComplete() {
-                Log.d(TAG, "onComplete: ");
+                Log.d(TAG, "下游onComplete: ");
 
             }
         };
@@ -73,7 +77,7 @@ public class MultiThreadChangeActivity extends AppCompatActivity {
                 .doOnNext(new Consumer<String>() {
                     @Override
                     public void accept(String string) throws Exception {
-                        Log.d(TAG, "After observeOn(NewThread),current thread is:"
+                        Log.d(TAG, "执行.observeOn(Schedulers.newThread())后的线程："
                                 + Thread.currentThread().getName());
 
                     }
@@ -82,7 +86,7 @@ public class MultiThreadChangeActivity extends AppCompatActivity {
                 .doOnNext(new Consumer<String>() {
                     @Override
                     public void accept(String string) throws Exception {
-                        Log.d(TAG, "After observeOn(io),current thread is:"
+                        Log.d(TAG, "执行.observeOn(Schedulers.newThread())后的线程："
                                 + Thread.currentThread().getName());
 
                     }
@@ -91,7 +95,7 @@ public class MultiThreadChangeActivity extends AppCompatActivity {
                 .doOnNext(new Consumer<String>() {
                     @Override
                     public void accept(String string) throws Exception {
-                        Log.d(TAG, "After observeOn(mainThread),current thread is:"
+                        Log.d(TAG, "执行.observeOn(Schedulers.newThread())后的线程："
                                 + Thread.currentThread().getName());
 
                     }

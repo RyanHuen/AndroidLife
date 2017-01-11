@@ -32,19 +32,19 @@ public class JustEmitterActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(String string) {
-                        Log.d(TAG, "onNext: " + string);
+                        Log.d(TAG, "上游onNext: " + string);
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d(TAG, "onError: ");
+                        Log.d(TAG, "上游onError: ");
 
                     }
 
                     @Override
                     public void onComplete() {
-                        Log.d(TAG, "onComplete: ");
+                        Log.d(TAG, "上游onComplete: ");
 
                     }
                 });

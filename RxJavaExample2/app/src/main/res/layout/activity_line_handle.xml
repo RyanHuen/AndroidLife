@@ -6,16 +6,4 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.ryanhuen.rxjava2demo.base.LineHandleActivity">
-
-    <Button
-        android:id="@+id/perform_action"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="执行" />
-
-    <TextView
-        android:id="@+id/content_display"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+    tools:context="com.ryanhuen.rxjava2demo.base.LineHandleActivity" />
