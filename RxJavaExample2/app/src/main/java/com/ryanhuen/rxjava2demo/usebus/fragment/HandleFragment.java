@@ -13,15 +13,13 @@ import com.chaozhuo.rxjava2demo.R;
 import com.ryanhuen.rxbus.RxBus;
 import com.ryanhuen.rxjava2demo.usebus.event.TestEvent;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HandleFragment extends Fragment {
-
 
     private android.widget.TextView mObjectReceive;
 
@@ -34,8 +32,6 @@ public class HandleFragment extends Fragment {
         return fragment;
     }
 
-    private CompositeDisposable mDisposable = new CompositeDisposable();
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,38 +40,37 @@ public class HandleFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_handle, container, false);
         initView(view);
         return view;
     }
 
+    private Subscription mSubscription;
 
     private void initSubscribe() {
-        RxBus.INSTANCE.tObservable(TestEvent.class)
-                .subscribeWith(new Observer<TestEvent>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        mDisposable.add(d);
-                    }
+        RxBus.INSTANCE.toSubscriber(TestEvent.class).subscribeWith(new Subscriber<TestEvent>() {
+            @Override
+            public void onSubscribe(Subscription s) {
+                mSubscription = s;
+                mSubscription.request(Long.MAX_VALUE);
+            }
 
-                    @Override
-                    public void onNext(TestEvent testEvent) {
+            @Override
+            public void onNext(TestEvent testEvent) {
+                mObjectReceive.setText(mObjectReceive.getText() + "  " + testEvent.number);
+            }
 
-                        mObjectReceive.setText(mObjectReceive.getText() + "  " + testEvent.number);
-                    }
+            @Override
+            public void onError(Throwable t) {
+            }
 
-                    @Override
-                    public void onError(Throwable e) {
+            @Override
+            public void onComplete() {
+            }
+        });
 
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
     }
 
     private void initView(View view) {
@@ -85,6 +80,6 @@ public class HandleFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mDisposable.clear();
+        mSubscription.cancel();
     }
 }
