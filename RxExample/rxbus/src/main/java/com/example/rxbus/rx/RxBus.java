@@ -7,7 +7,7 @@ import rx.subjects.ReplaySubject;
 import rx.subjects.SerializedSubject;
 
 /**
- * Created by xianeng on 16-8-2.
+ * Created by ryanhuen on 16-8-2.
  */
 public class RxBus {
 
